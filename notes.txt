@@ -1,0 +1,42 @@
+Alat dan Teknologi
+
+1. Laravel Framework (v12.x): Framework utama pengembangan aplikasi web.
+2. PHP (v8.2): Bahasa pemrograman backend.
+3. MySQL/MariaDB: Database relasional.
+4. Composer: Dependency manager untuk PHP.
+5. Git: Version control system untuk kolaborasi dan manajemen kode.
+
+Fungsi dan Fitur
+
+1. Autentikasi Pengguna
+   - Registrasi, login, dan logout untuk user dan admin.
+   - Pembatasan akses halaman berdasarkan peran (user/admin) menggunakan middleware.
+2. Dashboard Admin
+   - Admin dapat melihat ringkasan data penting aplikasi.
+   - Admin dapat mengelola produk/menu (tambah, edit, hapus, lihat detail).
+   - Admin dapat melihat, memoderasi, dan menghapus review dari user.
+3. Manajemen Produk/Menu
+   - User dapat melihat daftar produk/menu beserta detailnya.
+   - Admin dapat menambah, mengedit, dan menghapus produk/menu.
+4. Review Produk/Menu
+   - User dapat memberikan review dan rating pada produk/menu.
+   - Review dapat dilihat oleh user lain dan dimoderasi oleh admin.
+5. Keranjang Belanja (Cart)
+   - User dapat menambah produk ke keranjang, mengubah jumlah, dan menghapus item.
+   - Keranjang menampilkan total harga dan daftar item yang dipilih.
+6. Checkout & Pembayaran
+   - User dapat melakukan checkout dari keranjang belanja.
+   - Sistem menampilkan ringkasan pesanan sebelum pembayaran.
+   - User dapat melihat status pembayaran dan riwayat pesanan.
+7. Manajemen Profil Pengguna
+   - User dapat melihat dan mengedit profil (nama, email, password, dll).
+   - User dapat mengunggah foto profil (jika diimplementasikan).
+8. Keamanan & Validasi
+   - Validasi input pada setiap form (registrasi, login, produk, review, dll).
+   - Proteksi akses halaman dengan middleware auth dan admin.
+   - Logout otomatis jika session habis atau user tidak berhak mengakses halaman tertentu.
+9. Notifikasi & Feedback
+   - Pesan sukses/gagal pada setiap aksi (login, CRUD, checkout, dll).
+   - Feedback error jika terjadi kesalahan input atau akses.
+10. Responsive Design
+   - Tampilan aplikasi dapat diakses dengan baik di berbagai perangkat (desktop & mobile).
