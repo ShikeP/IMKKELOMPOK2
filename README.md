@@ -1,61 +1,131 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# WarungAbdya - Sistem Pemesanan Makanan Online
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Selamat datang di proyek WarungAbdya! Ini adalah sistem pemesanan makanan online yang dibangun menggunakan Laravel. Aplikasi ini memungkinkan pengguna untuk menjelajahi menu, menambahkan item ke keranjang, melakukan proses checkout, mengelola profil mereka, dan menandai hidangan favorit. Dilengkapi juga dengan panel admin untuk pengelolaan makanan, pesanan, pengguna, dan ulasan secara komprehensif.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+*   **Autentikasi Pengguna**: Pendaftaran, Login, dan Logout untuk pengguna biasa dan admin.
+*   **Kontrol Akses Berbasis Peran**: Membedakan antara peran `user` dan `admin` dengan hak akses yang berbeda.
+*   **Menu Makanan Dinamis**: Menampilkan daftar makanan dengan filter kategori (Makanan, Lauk, Camilan, Minuman).
+*   **Halaman Detail Produk Interaktif**:
+    *   Deskripsi makanan dan harga.
+    *   Ulasan dan penilaian dari pengguna.
+    *   Fungsionalitas "Tambah ke Keranjang".
+    *   Fitur Favorit/Daftar Keinginan dengan ikon hati interaktif (abu-abu untuk belum favorit, merah untuk sudah favorit).
+    *   Bagian "Lauk Rekomendasi" yang menampilkan hidangan pelengkap yang relevan.
+*   **Manajemen Keranjang Belanja**:
+    *   Menambah, mengubah jumlah, dan menghapus item dari keranjang.
+    *   Panel keranjang samping yang interaktif.
+*   **Proses Checkout Terpadu**:
+    *   Pilihan tipe pesanan (Ambil di Tempat / Pengiriman).
+    *   Input detail pengguna (nama, alamat, telepon, email).
+    *   Berbagai metode pembayaran (GoPay, OVO, Cash on Delivery).
+    *   Ringkasan pesanan dan konfirmasi.
+*   **Manajemen Profil Pengguna**: Melihat dan mengedit informasi profil pengguna.
+*   **Panel Admin**:
+    *   Dashboard untuk ringkasan data.
+    *   Manajemen Produk (CRUD: Buat, Baca, Perbarui, Hapus).
+    *   Manajemen Ulasan (Melihat, Menghapus).
+    *   Manajemen Pesanan (Melihat, Memperbarui Status).
+    *   Manajemen Pengguna.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*   **Backend**: PHP 8.x dengan Laravel Framework 10.x
+*   **Database**: MySQL
+*   **Templating**: Blade
+*   **Frontend Interaktivitas**: JavaScript Vanilla (untuk keranjang, favorit, dll.)
+*   **Manajemen Paket PHP**: Composer
+*   **Manajemen Paket JavaScript**: npm (atau Yarn)
+*   **Asset Bundling**: Vite
 
-## Learning Laravel
+## Panduan Instalasi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Ikuti langkah-langkah di bawah ini untuk menginstal dan menjalankan proyek secara lokal.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prasyarat
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Pastikan Anda telah menginstal yang berikut:
+*   PHP >= 8.1
+*   Composer
+*   Node.js & npm (atau Yarn)
+*   MySQL Server
 
-## Laravel Sponsors
+### Langkah-langkah Instalasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1.  **Clone Repositori**:
+    ```bash
+    git clone <URL_REPOSITORI_ANDA>
+    cd abdya-copy-2 # Ganti dengan nama folder proyek Anda jika berbeda
+    ```
 
-### Premium Partners
+2.  **Instal Dependensi PHP**:
+    ```bash
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3.  **Instal Dependensi JavaScript**:
+    ```bash
+    npm install
+    # atau
+    # yarn install
+    ```
 
-## Contributing
+4.  **Konfigurasi Variabel Lingkungan**:
+    *   Duplikasi file `.env.example` dan ganti namanya menjadi `.env`:
+        ```bash
+        cp .env.example .env
+        ```
+    *   Buat kunci aplikasi (application key):
+        ```bash
+        php artisan key:generate
+        ```
+    *   Buka file `.env` dan konfigurasikan detail koneksi database Anda:
+        ```dotenv
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=abdya # Ganti dengan nama database Anda
+        DB_USERNAME=root # Ganti dengan username database Anda
+        DB_PASSWORD= # Ganti dengan password database Anda (biarkan kosong jika tidak ada)
+        ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  **Jalankan Migrasi dan Seeder Database**:
+    ```bash
+    php artisan migrate
+    php artisan db:seed # Ini akan mengisi database dengan data awal (pengguna, kategori, makanan)
+    ```
+    *Catatan: Jika `php artisan migrate` menghasilkan error tentang tabel yang sudah ada, itu berarti Anda pernah menjalankannya sebelumnya. Pastikan tabel `sessions` dan `users` sudah ada di database Anda.*
 
-## Code of Conduct
+6.  **Buat Symlink Penyimpanan (untuk gambar)**:
+    ```bash
+    php artisan storage:link
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7.  **Kompilasi Aset Frontend**:
+    ```bash
+    npm run dev # Untuk pengembangan dengan hot-reloading
+    # atau
+    # npm run build # Untuk produksi
+    ```
 
-## Security Vulnerabilities
+## Cara Penggunaan
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1.  **Mulai Server Pengembangan Laravel**:
+    ```bash
+    php artisan serve
+    ```
 
-## License
+2.  **Akses Aplikasi**:
+    Buka browser web Anda dan navigasi ke `http://127.0.0.1:8000` (atau alamat yang ditampilkan di terminal Anda).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3.  **Kredensial Default (jika di-seed)**:
+    *   **Pengguna Biasa**: `test@example.com` / `password` (Anda dapat memeriksa `database/seeders/DatabaseSeeder.php` untuk detail).
+    *   **Admin**: Jika belum ada, Anda bisa membuat pengguna admin secara manual melalui Tinker:
+        ```bash
+        php artisan tinker
+        >>> use App\Models\User;
+        >>> use Illuminate\Support\Facades\Hash;
+        >>> User::create(['name' => 'Admin User', 'email' => 'admin@example.com', 'password' => Hash::make('password'), 'role' => 'admin']);
+        ```
+
