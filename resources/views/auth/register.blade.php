@@ -59,12 +59,6 @@
             </div>
             <button class="btn" type="submit">Create Account</button>
         </form>
-        <div class="or"><div class="or-line"></div><div class="or-text">OR</div><div class="or-line"></div></div>
-        <div class="socials">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter">
-        </div>
     </div>
 </div>
 <script>

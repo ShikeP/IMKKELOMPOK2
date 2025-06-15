@@ -22,11 +22,32 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        // Tambah kategori Meals jika belum ada
-        $mealsCategory = Category::firstOrCreate([
-            'type' => 'Meals',
+        // Tambah kategori Makanan
+        $makananCategory = Category::firstOrCreate([
+            'type' => 'Makanan',
         ], [
-            'name' => 'Makanan Berat',
+            'name' => 'Makanan',
+        ]);
+
+        // Tambah kategori Lauk
+        Category::firstOrCreate([
+            'type' => 'Lauk',
+        ], [
+            'name' => 'Lauk',
+        ]);
+
+        // Tambah kategori Camilan
+        Category::firstOrCreate([
+            'type' => 'Camilan',
+        ], [
+            'name' => 'Camilan',
+        ]);
+
+        // Tambah kategori Minuman
+        Category::firstOrCreate([
+            'type' => 'Minuman',
+        ], [
+            'name' => 'Minuman',
         ]);
 
         // Tambah menu Nasi Padang Ayam
@@ -35,9 +56,20 @@ class DatabaseSeeder extends Seeder
         ], [
             'price' => 25000,
             'image' => 'images/naspad.png',
-            'category_id' => $mealsCategory->id,
+            'category_id' => $makananCategory->id,
             'is_popular' => true,
             'description' => 'Nasi Padang lengkap dengan lauk ayam dan sambal.'
+        ]);
+
+        // Tambah menu Nasi Rendang
+        Food::firstOrCreate([
+            'name' => 'Nasi Rendang',
+        ], [
+            'price' => 30000,
+            'image' => 'images/nasi_rendang.png',
+            'category_id' => $makananCategory->id,
+            'is_popular' => true,
+            'description' => 'Nasi dengan rendang daging sapi yang kaya rempah.'
         ]);
     }
 }

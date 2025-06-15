@@ -36,6 +36,16 @@
         .or-text { margin: 0 12px; color: #aaa; font-size: 0.95rem; }
         .socials { display: flex; justify-content: center; gap: 18px; margin-top: 18px; }
         .socials img { width: 38px; height: 38px; border-radius: 50%; cursor: pointer; border: 1.5px solid #eee; background: #fff; }
+        .error-message {
+            color: #dc2626;
+            background-color: #fee2e2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 0 32px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -48,25 +58,19 @@
             <div class="tab active">Sign In</div>
             <a href="{{ route('register') }}" class="tab inactive" style="text-decoration:none;">Sign Up</a>
         </div>
-        <form method="POST" action="{{ url('/login') }}">
+        @if ($errors->any())
+            <div class="error-message">
+                {{ $errors->first() }}
+            </div>
+        @endif
+        <form method="POST" action="{{ route('login') }}">
             @csrf
-            <input type="email" name="email" placeholder="E-mail address" required autofocus>
+            <input type="email" name="email" placeholder="E-mail address" value="{{ old('email') }}" required autofocus>
             <input type="password" name="password" placeholder="Enter password" required>
             <div class="forgot"><a href="#" style="color:#aaa;text-decoration:none;">Forgot password?</a></div>
             <button class="btn" type="submit">Login</button>
         </form>
-        <div class="or"><div class="or-line"></div><div class="or-text">OR</div><div class="or-line"></div></div>
-        <div class="socials">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" alt="Twitter">
-        </div>
     </div>
 </div>
-@if ($errors->any())
-    <div style="color: red; text-align:center; margin-top:10px;">
-        {{ $errors->first() }}
-    </div>
-@endif
 </body>
 </html> 

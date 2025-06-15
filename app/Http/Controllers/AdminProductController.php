@@ -22,10 +22,18 @@ class AdminProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
             'description' => 'nullable|string',
         ]);
-        Food::create($request->all());
+
+        $data = $request->except(['_token']);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $data['image'] = $imagePath;
+        }
+
+        Food::create($data);
         return redirect()->route('admin.products.index')->with('success', 'Product added!');
     }
     public function edit($id) {
@@ -38,11 +46,23 @@ class AdminProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
             'description' => 'nullable|string',
         ]);
+
         $product = Food::findOrFail($id);
-        $product->update($request->all());
+        $data = $request->except(['_token', '_method']);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($product->image && file_exists(public_path($product->image))) {
+                unlink(public_path($product->image));
+            }
+            $imagePath = $request->file('image')->store('images', 'public');
+            $data['image'] = $imagePath;
+        }
+
+        $product->update($data);
         return redirect()->route('admin.products.index')->with('success', 'Product updated!');
     }
     public function destroy($id) {

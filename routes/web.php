@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderSummaryController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\FavoriteController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -25,14 +27,13 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::get('/menu', [MenuController::class, 'index'])->middleware('auth')->name('menu');
+Route::get('/menu/category/{categoryName}', [MenuController::class, 'index'])->middleware('auth')->name('menu.category');
 Route::get('/menu/{id}', [MenuController::class, 'show'])->middleware('auth')->name('menu.show');
 Route::post('/menu/{id}/review', [MenuController::class, 'storeReview'])->middleware('auth')->name('menu.review');
 
 // Admin routes
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function() {
-    Route::get('/dashboard', function() {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('dashboard');
     
     // Product management
     Route::resource('products', AdminProductController::class);
@@ -40,6 +41,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     // Review management
     Route::get('reviews', [AdminReviewController::class, 'index'])->name('reviews.index');
     Route::delete('reviews/{id}', [AdminReviewController::class, 'destroy'])->name('reviews.destroy');
+    
+    // Order management
+    Route::resource('orders', \App\Http\Controllers\AdminOrderController::class);
+    Route::post('orders/{id}/update-status', [\App\Http\Controllers\AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
+    
+    // User management
+    Route::resource('users', \App\Http\Controllers\AdminUserController::class);
     
     // Additional admin routes can be added here
 });
@@ -68,4 +76,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/order-summary', [OrderSummaryController::class, 'index'])->name('order.summary');
     Route::get('/payment', [PaymentController::class, 'create'])->name('payment.create');
     Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
+    Route::post('/order/store', [OrderSummaryController::class, 'store'])->name('order.store');
+
+    // Favorite Routes
+    Route::post('/favorites/{food}/add', [FavoriteController::class, 'addFavorite'])->name('favorites.add');
+    Route::post('/favorites/{food}/remove', [FavoriteController::class, 'removeFavorite'])->name('favorites.remove');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::get('/favorites/{food}/check-status', [FavoriteController::class, 'checkFavoriteStatus'])->name('favorites.checkStatus');
 });

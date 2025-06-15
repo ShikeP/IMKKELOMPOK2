@@ -5,14 +5,14 @@
     <title>Order Summary</title>
     <style>
         body, html { margin: 0; padding: 0; background: #fafafa; font-family: 'Open Sans', sans-serif; }
-        .container { max-width: 420px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 24px rgba(0,0,0,0.06); padding-bottom: 40px; }
+        .container { max-width: 1200px; margin: 40px auto; background: #fff; min-height: 100vh; box-shadow: none !important; padding: 32px; }
         .header { display: flex; align-items: center; padding: 24px 20px 0 20px; }
         .header-title { flex: 1; text-align: center; font-size: 1.3rem; font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .back-btn { background: none; border: none; font-size: 1.7rem; color: #ff7300; cursor: pointer; }
         .step-indicator { display: flex; justify-content: center; align-items: center; margin: 18px 0 18px 0; }
         .step-dot { width: 16px; height: 16px; border-radius: 50%; background: #ff7300; margin: 0 8px; }
         .step-dot.inactive { background: #eee; }
-        .summary-box { background: #fafafa; border-radius: 16px; margin: 0 20px 18px 20px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .summary-box { background: #fafafa; border-radius: 16px; margin: 0 20px 18px 20px; padding: 18px; box-shadow: none !important; }
         .order-item { display: flex; align-items: center; margin-bottom: 12px; }
         .order-item img { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; margin-right: 12px; }
         .order-info { flex: 1; }
@@ -21,7 +21,7 @@
         .order-price { font-weight: 700; color: #ff7300; font-size: 1.05rem; }
         .order-total { font-size: 1.1rem; font-weight: 700; text-align: right; margin: 12px 0 0 0; }
         .order-label { color: #888; font-size: 0.98rem; }
-        .address-box { background: #fff; border-radius: 16px; margin: 0 20px 18px 20px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .address-box { background: #fff; border-radius: 16px; margin: 0 20px 18px 20px; padding: 18px; box-shadow: none !important; }
         .address-label { color: #888; font-size: 0.98rem; margin-bottom: 6px; }
         .address-value { font-size: 1.05rem; margin-bottom: 2px; }
         .order-actions { display: flex; gap: 12px; margin: 0 20px; }

@@ -13,13 +13,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $categories = Category::all();
-        $meals = Food::whereHas('category', function($q){ $q->where('type', 'Meals'); })->get();
-        $sides = Food::whereHas('category', function($q){ $q->where('type', 'Sides'); })->get();
-        $snacks = Food::whereHas('category', function($q){ $q->where('type', 'Snacks'); })->get();
-        $drinks = Food::whereHas('category', function($q){ $q->where('type', 'Drinks'); })->get();
+        $allFoods = Food::all();
         $specialOffer = Offer::latest()->first();
-        $popularFoods = Food::where('is_popular', true)->get();
-        return view('home', compact('user', 'categories', 'meals', 'sides', 'snacks', 'drinks', 'specialOffer', 'popularFoods'));
+
+        return view('home', compact('user', 'allFoods', 'specialOffer'));
     }
 }

@@ -10,11 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $categoryName = null)
     {
         $categories = Category::all();
-        $activeCategory = $request->get('category', 'Meals');
-        $category = Category::where('type', $activeCategory)->first();
+        $activeCategory = $categoryName ?? 'Makanan';
+
+        $category = Category::where('name', $activeCategory)->first();
+
+        // Jika kategori tidak ditemukan, default ke 'Makanan' untuk mencegah error
+        if (!$category) {
+            $activeCategory = 'Makanan';
+            $category = Category::where('name', 'Makanan')->first();
+        }
+
         $foods = $category ? Food::where('category_id', $category->id)->get() : collect();
         return view('menu', compact('categories', 'foods', 'activeCategory'));
     }
@@ -22,9 +30,21 @@ class MenuController extends Controller
     public function show($id)
     {
         $food = Food::findOrFail($id);
-        $recommendedSides = Food::whereHas('category', function($q){ $q->where('type', 'Sides'); })->get();
+        
+        // Ambil kategori 'Lauk'
+        $laukCategory = Category::where('name', 'Lauk')->first();
+
+        $recommendedLauk = collect();
+        if ($laukCategory) {
+            $recommendedLauk = Food::where('category_id', $laukCategory->id)
+                                ->where('id', '!=', $food->id)
+                                ->take(6) // Ambil maksimal 6 lauk rekomendasi
+                                ->get();
+        }
+
         $reviews = Review::where('food_id', $food->id)->with('user')->latest()->get();
-        return view('menu_description', compact('food', 'recommendedSides', 'reviews'));
+
+        return view('menu_description', compact('food', 'recommendedLauk', 'reviews'));
     }
 
     public function storeReview(Request $request, $id)

@@ -1,3 +1,6 @@
+@include('partials.sidebar')
+@include('partials.cart_panel')
+@include('partials.checkout_panel')
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -5,7 +8,7 @@
     <title>Keranjang Belanja</title>
     <style>
         body, html { margin: 0; padding: 0; background: #fafafa; font-family: 'Open Sans', sans-serif; }
-        .container { max-width: 420px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 24px rgba(0,0,0,0.06); }
+        .container { max-width: 1200px; margin: 40px auto; background: #fff; min-height: 100vh; box-shadow: 0 0 24px rgba(0,0,0,0.06); padding: 32px; }
         .header { padding: 24px 20px 0 20px; display: flex; align-items: center; }
         .header h2 { margin: 0; font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; flex:1; text-align:center; }
         .cart-list { margin: 24px 0 0 0; }
@@ -55,7 +58,7 @@
     <div class="cart-note">(Belum termasuk ongkir)</div>
     <div class="cart-actions">
         <a href="/menu" class="cart-btn" style="display:block;text-align:center;text-decoration:none;">Tambah Menu</a>
-        <a href="{{ route('checkout.create') }}" class="cart-btn" style="display:block;text-align:center;text-decoration:none;">Checkout</a>
+        <a href="#" onclick="openCartPanel();return false;" class="cart-btn" style="display:block;text-align:center;text-decoration:none;">Checkout</a>
     </div>
 </div>
 </body>

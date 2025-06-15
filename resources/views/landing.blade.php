@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yummies - Landing Page</title>
+    <title>WarungAbdya - Landing Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body, html {
@@ -76,7 +76,7 @@
         $landing) && $landing->background_image)background-image: url('{{ $landing->background_image }}');@endif"></div>
     <div class="overlay"></div>
     <div class="content">
-        <div class="title">{{ $landing->title ?? 'Yummies' }}</div>
+        <div class="title">{{ $landing->title ?? 'WarungAbdya' }}</div>
         <div class="subtitle">{{ $landing->subtitle ?? 'Nikmati hidangan lezat diantar ke rumah Anda' }}</div>
         <a href="{{ route('login') }}" class="btn" style="display:inline-block;text-decoration:none;">{{ $landing->button_text ?? 'Mulai Sekarang' }}</a>
     </div>

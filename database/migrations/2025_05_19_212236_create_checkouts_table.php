@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('order_type');
             $table->string('name');
-            $table->string('address');
-            $table->string('city');
             $table->string('phone');
-            $table->boolean('use_profile')->default(false);
+            $table->string('email');
+            $table->string('address');
+            $table->string('payment_method');
+            $table->string('note')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
         });
